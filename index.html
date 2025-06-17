@@ -58,6 +58,13 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-gray-50 font-inter text-gray-800">
@@ -66,7 +73,7 @@
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#home" class="text-2xl font-bold text-paraguai-blue">2°F Paraguaios</a>
             <div class="hidden md:flex space-x-8">
-                <a href="#about" class="nav-link text-gray-600 hover:text-paraguai-red font-medium">É </a>
+                <a href="#about" class="nav-link text-gray-600 hover:text-paraguai-red font-medium">Sobre</a>
                 <a href="#projects" class="nav-link text-gray-600 hover:text-paraguai-red font-medium">Nossos Destaques</a>
                 <a href="#contact" class="nav-link text-gray-600 hover:text-paraguai-red font-medium">Contato</a>
             </div>
@@ -101,72 +108,26 @@
                 </div>
                 <div class="md:w-2/3">
                     <p class="text-gray-700 leading-relaxed mb-4">
-                        Aqui você pode escrever um pouco sobre sua jornada profissional, suas paixões e o que te motiva. Fale sobre suas habilidades, experiências e o tipo de trabalho que você ama fazer.
+                Aaaaaa
                     </p>
                     <p class="text-gray-700 leading-relaxed">
-                        Por exemplo: "Com mais de 5 anos de experiência em desenvolvimento front-end, sou especialista em React e Vue.js. Tenho um forte interesse em UI/UX e em construir interfaces que não sejam apenas bonitas, mas também intuitivas e acessíveis a todos."
-                    </p>
+                        Aaaaaaaa </p>
                 </div>
             </div>
         </section>
-
+<div><div style="left: 0; width: 100%; height: 140px; position: relative;"><iframe src="https://cdn.iframe.ly/api/iframe?app=1&url=https%3A%2F%2Finstagram.com%2Fgisa.2fparaguai&key=925108d922be940af814f71907a7df4b" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen></iframe></div><a href="https://embedcodesgenerator.com/tools/instagram-embed-code?gad_source=1&gad_campaignid=22458335448&gbraid=0AAAAA_LxlSilbzhlvnFVog2j1zCu2zDRO&gclid=CjwKCAjwpMTCBhA-EiwA_-MsmSeWc6QehsaKMkRG_ro2HWe-V--T3kqfOpdPHXatrrLeEs4yGjpvHRoC5uEQAvD_BwE" rel="noopener" target="_blank" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">instagram embed code</a></div>
         <div class="w-full h-1 my-12 bg-gradient-to-r from-paraguai-red via-paraguai-white to-paraguai-blue"></div>
 
         <section id="projects" class="py-16">
-            <h2 class="text-3xl font-bold text-center text-paraguai-blue mb-12">Meus Projetos</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="https://2fparaguaios.github.io/IMG-20250617-WA0013.jpg" alt="Miss e Mister" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-paraguai-blue mb-2">Mister & Miss</h3>
-                        <p class="text-gray-600 mb-4">APRESENTAMOS A VOCÊS NOSSO MISTER & MISS !!</p>
-                        <a href="https://www.instagram.com/p/DKPPLsVugh8" class="text-paraguai-red font-semibold hover:underline">Ver no Instagram &rarr;</a>
-                    </div>
-                </div>
-
-                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="https://placehold.co/600x400/0038A8/FFFFFF?text=Projeto+2" alt="Imagem do Projeto 2" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-paraguai-blue mb-2">Nome do Projeto 2</h3>
-                        <p class="text-gray-600 mb-4">Breve descrição do projeto, as tecnologias usadas e o que ele resolve.</p>
-                        <a href="#" class="text-paraguai-red font-semibold hover:underline">Ver Detalhes &rarr;</a>
-                    </div>
-                </div>
-
-                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="https://placehold.co/600x400/EEEEEE/333333?text=Projeto+3" alt="Imagem do Projeto 3" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-paraguai-blue mb-2">Nome do Projeto 3</h3>
-                        <p class="text-gray-600 mb-4">Breve descrição do projeto, as tecnologias usadas e o que ele resolve.</p>
-                        <a href="#" class="text-paraguai-red font-semibold hover:underline">Ver Detalhes &rarr;</a>
-                    </div>
-                </div>
-
-                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="https://placehold.co/600x400/FF6B35/FFFFFF?text=Projeto+4" alt="Imagem do Projeto 4" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-paraguai-blue mb-2">Nome do Projeto 4</h3>
-                        <p class="text-gray-600 mb-4">Breve descrição do projeto, as tecnologias usadas e o que ele resolve.</p>
-                        <a href="#" class="text-paraguai-red font-semibold hover:underline">Ver Detalhes &rarr;</a>
-                    </div>
-                </div>
-
-                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="https://placehold.co/600x400/00C851/FFFFFF?text=Projeto+5" alt="Imagem do Projeto 5" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-paraguai-blue mb-2">Nome do Projeto 5</h3>
-                        <p class="text-gray-600 mb-4">Breve descrição do projeto, as tecnologias usadas e o que ele resolve.</p>
-                        <a href="#" class="text-paraguai-red font-semibold hover:underline">Ver Detalhes &rarr;</a>
-                    </div>
-                </div>
-
+            <h2 class="text-3xl font-bold text-center text-paraguai-blue mb-12">Nossos Destaques</h2>
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Os projetos serão inseridos dinamicamente aqui -->
             </div>
         </section>
 
         <section id="contact" class="py-16">
             <h2 class="text-3xl font-bold text-center text-paraguai-blue mb-4">Continue conectado</h2>
-            <p class="text-center text-gray-600 mb-12 max-w-xl mx-auto">Siga nosso Instagram para mais atualização e novidades !</p>
+            <p class="text-center text-gray-600 mb-12 max-w-xl mx-auto">Siga nosso Instagram para mais atualizações e novidades!</p>
             <div class="max-w-lg mx-auto text-center">
                 <a href="https://www.instagram.com/gisa.2fparaguai" class="bg-paraguai-blue text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-900 transition duration-300 inline-block">
                     @gisa.2fparaguai
@@ -183,14 +144,159 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
+        // JSON com todos os dados dos projetos - TOTALMENTE CUSTOMIZÁVEL
+        const projectsData = {
+            projects: [
+                {
+                    id: 1,
+                    title: "Mister & Miss 2°F",
+                    description: "APRESENTAMOS A VOCÊS NOSSO MISTER & MISS!!",
+                    image: "https://2fparaguaios.github.io/IMG-20250617-WA0013.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DKPPLsVugh8",
+                    category: "Mister & Miss"
+                },
+                {
+                    id: 2,
+                    title: "Mister",
+                    description: "APRESENTAMOS A VOCÊS, NOSSO MISTER❤️🤍💙",
+                    image: "https://2fparaguaios.github.io/IMG-20250617-WA0014.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DKPO14DuP9y",
+                    category: "Mister"
+                },
+                {
+                    id: 3,
+                    title: "Miss",
+                    description: "APRESENTAMOS A VOCÊS A NOSSA MISS❤️🤍💙",
+                    image: "https://2fparaguaios.github.io/IMG-20250617-WA0016.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DKPP1l-OAAL",
+                    category: "Miss"
+                },
+                {
+                    id: 4,
+                    title: "Hellyton Marinho",
+                    description: "Professor Orientador do 2° Ano F",
+                    image: "https://2fparaguaios.github.io/IMG-20250617-WA0018.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DJ70kVXO1aA/",
+                    category: "Orientador"
+                },
+                {
+                    id: 5,
+                    title: "Deveraldo Albuquerque",
+                    description: "Professor Orientador do 2° Ano F",
+                    image: "https://2fparaguaios.github.io/IMG-20250617-WA0020.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DJ74DcFusxq",
+                    category: "Orientador"
+                }
+            ]
+        };
+
+        // Função para criar um card de projeto
+        function createProjectCard(project, index) {
+            return `
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in" style="animation-delay: ${index * 0.1}s">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover" loading="lazy" onerror="this.src='https://placehold.co/600x400/0038A8/FFFFFF?text=${encodeURIComponent(project.title)}'">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-xl font-bold text-paraguai-blue">${project.title}</h3>
+                            <span class="text-xs bg-paraguai-red text-white px-2 py-1 rounded-full">${project.category}</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed">${project.description}</p>
+                        <a href="${project.buttonLink}" target="_blank" class="text-paraguai-red font-semibold hover:underline transition-all duration-300 hover:text-red-700">
+                            ${project.buttonText} &rarr;
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Função para renderizar todos os projetos
+        function renderProjects() {
+            const container = document.getElementById('projects-container');
+            
+            if (!container) {
+                console.error('Container de projetos não encontrado!');
+                return;
+            }
+
+            const projectsHTML = projectsData.projects
+                .map((project, index) => createProjectCard(project, index))
+                .join('');
+            
+            container.innerHTML = projectsHTML;
+        }
+
+        // Função para adicionar um novo projeto (exemplo de uso)
+        function addProject(newProject) {
+            projectsData.projects.push({
+                id: projectsData.projects.length + 1,
+                ...newProject
+            });
+            renderProjects();
+        }
+
+        // Função para filtrar projetos por categoria
+        function filterProjectsByCategory(category) {
+            const container = document.getElementById('projects-container');
+            let filteredProjects = projectsData.projects;
+            
+            if (category && category !== 'all') {
+                filteredProjects = projectsData.projects.filter(project => project.category === category);
+            }
+            
+            const projectsHTML = filteredProjects
+                .map((project, index) => createProjectCard(project, index))
+                .join('');
+            
+            container.innerHTML = projectsHTML;
+        }
+
+        // Menu mobile
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        // Inicializar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProjects();
+            
+            // Exemplo de como adicionar um novo projeto dinamicamente
+            // setTimeout(() => {
+            //     addProject({
+            //         title: "Novo Evento",
+            //         description: "Descrição do novo evento incrível da nossa turma!",
+            //         image: "https://placehold.co/600x400/00C851/FFFFFF?text=Novo+Evento",
+            //         buttonText: "Ver Evento",
+            //         buttonLink: "https://www.instagram.com/gisa.2fparaguai",
+            //         category: "novo"
+            //     });
+            // }, 3000);
+        });
+
+        // Função global para facilitar a adição de projetos via console
+        window.adicionarProjeto = function(titulo, descricao, imagem, textoBotao, linkBotao, categoria) {
+            addProject({
+                title: titulo,
+                description: descricao,
+                image: imagem,
+                buttonText: textoBotao,
+                buttonLink: linkBotao,
+                category: categoria
+            });
+        };
+
+        // Função global para filtrar projetos
+        window.filtrarProjetos = function(categoria) {
+            filterProjectsByCategory(categoria);
+        };
     </script>
 </body>
-    </html>
+</html>
