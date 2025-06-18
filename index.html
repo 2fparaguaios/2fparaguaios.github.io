@@ -69,6 +69,37 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
+    .banner-paraguai {
+        background: linear-gradient(135deg, #D52B1E, #0038A8);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        color: white;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .banner-paraguai:hover {
+        transform: scale(1.02);
+    }
+
+    .banner-paraguai a {
+        display: inline-block;
+        margin: 0.5rem 1rem;
+        padding: 0.5rem 1.2rem;
+        background-color: white;
+        color: #D52B1E;
+        border-radius: 9999px;
+        font-weight: 600;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .banner-paraguai a:hover {
+        background-color: #D52B1E;
+        color: white;
+    }
+        
     </style>
 </head>
 <body class="bg-gray-50 font-inter text-gray-800">
@@ -101,6 +132,16 @@
             <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-8">Hermanos, Ey !</p>
             <a href="https://www.instagram.com/gisa.2fparaguai" class="bg-paraguai-red text-white font-bold py-3 px-8 rounded-lg hover:bg-red-700 transition duration-300">@gisa.2fparaguai</a>
         </section>
+
+                <section class="my-16 px-6">
+    <div class="banner-paraguai">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Conheça mais sobre o Paraguai e sua cultura</h2>
+        <div class="flex justify-center flex-wrap gap-4">
+            <a href="/comidas-tipicas">Comidas Típicas</a>
+            <a href="/dancas-paraguaias">Danças Paraguaias</a>
+        </div>
+    </div>
+</section>
 
         <div class="w-full h-1 my-12 bg-gradient-to-r from-paraguai-red via-paraguai-white to-paraguai-blue"></div>
         
