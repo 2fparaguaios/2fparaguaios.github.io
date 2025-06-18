@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comidas do Paraguai – 2°F Paraguaios</title>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'paraguai-red': '#D52B1E',
+            'paraguai-blue': '#0038A8',
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background: #f9fafb;
+    }
+    .card-food {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .card-food:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    .card-food img {
+      transition: scale 0.5s ease;
+    }
+    .card-food:hover img {
+      transform: scale(1.05);
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.7s forwards;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px); }
+    }
+    header, footer {
+      background-color: #0038A8;
+    }
+  </style>
+</head>
+<body class="font-inter text-gray-800">
+
+  <header class="sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold text-white">2°F Paraguaios</a>
+      <a href="https://www.instagram.com/gisa.2fparaguai" target="_blank"
+         class="text-white hover:text-gray-200 transition">
+        <i class="fab fa-instagram mr-1"></i>@gisa.2fparaguai
+      </a>
+    </nav>
+  </header>
+
+  <main class="container mx-auto px-6 py-12">
+    <section class="text-center mb-16">
+      <h1 class="text-5xl font-extrabold text-paraguai-blue mb-4">Comidas Típicas do Paraguai</h1>
+         <p class="text-xl text-gray-600">
+  Descubra os sabores autênticos do Paraguai, onde ingredientes simples se transformam em pratos marcantes, cheios de história e tradição.
+        </p>
+    </section>
+
+    <section id="foods" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Os cards serão inseridos aqui via JS -->
+    </section>
+  </main>
+
+  <footer class="py-6">
+    <div class="text-center text-white">
+      2° Ano F – 2025 | © Todos os direitos reservados
+    </div>
+  </footer>
+
+  <script>
+    const foodsData = {
+      foods: [
+        {
+          id: 1,
+          name: "Sopa Paraguaia",
+          desc: "Torta salgada de milho, queijo e cebola, tradicionalíssima.",
+          img: "https://upload.wikimedia.org/wikipedia/commons/4/49/Sopa_Paraguaya.jpg",
+          wiki: "https://pt.wikipedia.org/wiki/Sopa_paraguaia",
+        },
+        {
+          id: 2,
+          name: "Chipa",
+          desc: "Pão de queijo crocante por fora e macio por dentro.",
+          img: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Chipa_paraguaya.jpg",
+          wiki: "https://pt.wikipedia.org/wiki/Chipa",
+        },
+        {
+          id: 3,
+          name: "Mbeju",
+          desc: "Panqueca feita com fécula de mandioca e queijo.",
+          img: "https://upload.wikimedia.org/wikipedia/commons/0/03/Mbeju_paraguayo.jpg",
+          wiki: "https://pt.wikipedia.org/wiki/Mbeju",
+        },
+        // Adicione mais comidas conforme desejar
+      ]
+    };
+
+    const container = document.getElementById('foods');
+
+    function createCard(food, idx) {
+      const div = document.createElement('div');
+      div.className = `card-food bg-white fade-in`;
+      div.style.animationDelay = `${idx * 0.15}s`;
+      div.innerHTML = `
+        <img src="${food.img}" alt="${food.name}" class="w-full h-52 object-cover"/>
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold text-paraguai-blue mb-2">${food.name}</h3>
+          <p class="text-gray-700 mb-4">${food.desc}</p>
+          <a href="${food.wiki}" target="_blank"
+             class="inline-block bg-paraguai-red text-white font-semibold py-2 px-5 rounded-full hover:bg-red-600 transition">
+             Ver no Wikipedia
+          </a>
+        </div>`;
+      return div;
+    }
+
+    foodsData.foods.forEach((f, i) => {
+      container.appendChild(createCard(f, i));
+    });
+  </script>
+
+</body>
+</html>
+</html>
