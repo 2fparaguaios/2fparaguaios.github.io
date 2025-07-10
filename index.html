@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2°F Paraguaios</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'paraguai-red': '#D52B1E',
+                        'paraguai-blue': '#0038A8',
+                        'paraguai-white': '#FFFFFF',
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+    /* Transições e Animações Globais */
+    * {
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Animação de fade-in para carregamento de página */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fade-in {
+        animation: fadeIn 0.8s ease forwards;
+    }
+
+    /* Efeito hover nos links de navegação com animação suave */
+    .nav-link {
+        position: relative;
+        padding-bottom: 8px; /* Espaço para a linha animada */
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2.5px; /* Linha um pouco mais grossa */
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #D52B1E; /* Cor da bandeira do Paraguai */
+        transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição mais fluida */
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    /* Efeito hover nos cards de projeto */
+    .project-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden; /* Garante que a imagem não saia do card */
+        border-radius: 1rem; /* Consistência no arredondamento */
+        height: 372px;
+    }
+
+    .project-card:hover {
+        transform: translateY(-8px); /* Elevação um pouco maior */
+        box-shadow: 0 12px 20px -4px rgba(0, 0, 0, 0.15), 0 5px 8px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Animação de zoom na imagem do card do projeto */
+    .project-card img {
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .project-card:hover img {
+        transform: scale(1.07); /* Aumenta a imagem ao passar o mouse */
+    }
+
+    /* Estilo do banner paraguaio */
+    .banner-paraguai {
+        background: linear-gradient(135deg, #D52B1E, #0038A8);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        color: white;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .banner-paraguai:hover {
+        transform: scale(1.02);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .banner-paraguai a {
+        display: inline-block;
+        margin: 0.5rem 1rem;
+        padding: 0.6rem 1.5rem; /* Botões um pouco maiores */
+        background-color: white;
+        color: #D52B1E;
+        border-radius: 9999px;
+        font-weight: 600;
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    .banner-paraguai a:hover {
+        background-color: #D52B1E;
+        color: white;
+        transform: scale(1.05); /* Efeito de crescimento no botão */
+    }
+
+    /* Estilo para imagem de perfil responsiva com animação */
+    .responsive-img {
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+        border-radius: 50%;
+        border: 5px solid #0038A8; /* Borda um pouco mais grossa */
+        box-shadow: 0 0 0 0 rgba(0, 56, 168, 0.7);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .responsive-img:hover {
+        transform: scale(1.03); /* Aumenta levemente a imagem */
+        /* Efeito de brilho (glow) gradiente sutil */
+        box-shadow: 0 0 25px 5px rgba(213, 43, 30, 0.3), 0 0 35px 10px rgba(0, 56, 168, 0.3);
+    }
+
+    /* --- Media Queries para Responsividade --- */
+
+    /* Tablets e telas menores (até 768px) */
+    @media (max-width: 768px) {
+        body {
+            padding: 1rem; /* Mais espaço nas laterais */
+        }
+
+        .nav {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .banner-paraguai {
+            padding: 1.5rem;
+        }
+
+        .banner-paraguai h2 {
+            font-size: 1.5rem;
+        }
+
+        .grid {
+            grid-template-columns: 1fr; /* Uma coluna para os projetos */
+        }
+    }
+
+    /* Celulares (até 480px) */
+    @media (max-width: 480px) {
+        .banner-paraguai a {
+            display: block; /* Botões ocupam a largura toda */
+            margin: 0.75rem 0;
+        }
+
+        .responsive-img {
+            max-width: 200px; /* Imagem de perfil menor */
+        }
+    }
+</style>
+
+
+</head>
+<body class="bg-gray-50 font-inter text-gray-800">
+
+    <!-- Cabeçalho -->
+    <header id="home" class="bg-paraguai-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-paraguai-blue hover:text-paraguai-red transition-colors">2°F Paraguaios</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="https://www.instagram.com/gisa.2fparaguai" target="_blank" class="nav-link text-paraguai-blue hover:text-paraguai-red">
+                    <i class="fab fa-instagram mr-2"></i>Instagram
+                </a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-paraguai-blue hover:text-paraguai-red transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-paraguai-white">
+            <a href="https://www.instagram.com/gisa.2fparaguai" target="_blank" class="block py-2 px-4 text-sm hover:bg-gray-100 text-paraguai-blue">
+                <i class="fab fa-instagram mr-2"></i>Instagram
+            </a>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-6 py-8">
+
+        <!-- Seção Hero -->
+        <section class="text-center py-20">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-paraguai-blue mb-4">2°F Paraguaios</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-8">Hermanos, Ey !</p>
+            <a href="https://www.instagram.com/gisa.2fparaguai" target="_blank" class="bg-paraguai-red text-white font-bold py-3 px-8 rounded-lg hover:bg-red-700 transition duration-300 inline-block">
+                @gisa.2fparaguai
+            </a>
+        </section>
+
+        <!-- Banner de Cultura Paraguaia -->
+        <section class="my-16 px-6">
+            <div class="banner-paraguai">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Conheça mais sobre o Paraguai e sua cultura</h2>
+                <div class="flex justify-center flex-wrap gap-4">
+                    <a href="/comidas-tipicas">Comidas Típicas</a>
+                    <a href="/dancas-paraguaias">Danças Paraguaias</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divisor Temático -->
+        <div class="w-full h-1 my-12 bg-gradient-to-r from-paraguai-red via-paraguai-white to-paraguai-blue"></div>
+        
+        <!-- Seção Sobre Nós -->
+        <section id="about" class="py-16">
+            <h2 class="text-3xl font-bold text-center text-paraguai-blue mb-12">Sobre Nós</h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3 flex justify-center">
+                    <img src="https://2fparaguaios.github.io/paraguaios.jpg" alt="Gisa 2°F Paraguaios" class="responsive-img shadow-lg" loading="lazy">
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Bem-vindo ao nosso Paraguai! Onde a rica cultura e as belezas naturais do Paraguai ganham vida. Através de fotos, histórias e descobertas.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Convidamos você a mergulhar nessa jornada única. Cada clique é uma celebração da diversidade paraguaia. Vamos juntos?
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Widget do Instagram -->
+        <div class="my-12">
+            <div style="left: 0; width: 100%; height: 140px; position: relative;">
+                <iframe src="https://cdn.iframe.ly/api/iframe?app=1&url=https%3A%2F%2Finstagram.com%2Fgisa.2fparaguai&key=925108d922be940af814f71907a7df4b" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Divisor Temático -->
+        <div class="w-full h-1 my-12 bg-gradient-to-r from-paraguai-red via-paraguai-white to-paraguai-blue"></div>
+
+        <!-- Seção de Destaques -->
+        <section id="projects" class="py-16">
+            <h2 class="text-3xl font-bold text-center text-paraguai-blue mb-12">Nossos Destaques</h2>
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Os projetos serão inseridos dinamicamente aqui -->
+            </div>
+        </section>
+
+        <!-- Seção de Contato -->
+        <section id="contact" class="py-16">
+            <h2 class="text-3xl font-bold text-center text-paraguai-blue mb-4">Continue conectado</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-xl mx-auto">Siga nosso Instagram para mais atualizações e novidades!</p>
+            <div class="max-w-lg mx-auto text-center">
+                <a href="https://www.instagram.com/gisa.2fparaguai" target="_blank" class="bg-paraguai-blue text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-900 transition duration-300 inline-block">
+                    @gisa.2fparaguai
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-paraguai-blue text-paraguai-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>2° Ano F - 2025 © Todos os direitos reservados</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="https://www.instagram.com/gisa.2fparaguai" target="_blank" class="text-white hover:text-gray-300 transition-colors">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JSON com todos os dados dos projetos
+          const projectsData = {
+    projects: [
+        {
+            id: 1,
+            title: "Mister & Miss 2°F",
+            description: "APRESENTAMOS A VOCÊS NOSSO MISTER & MISS!!",
+            image: "https://2fparaguaios.github.io/IMG-20250617-WA0013.jpg",
+            buttonText: "Ver no Instagram",
+            buttonLink: "https://www.instagram.com/p/DKPPLsVugh8",
+            category: "Mister & Miss"
+        },
+        {
+            id: 2,
+            title: "Mister",
+            description: "APRESENTAMOS A VOCÊS, NOSSO MISTER❤️🤍💙",
+            image: "https://2fparaguaios.github.io/IMG-20250617-WA0014.jpg",
+            buttonText: "Ver no Instagram",
+            buttonLink: "https://www.instagram.com/p/DKPO14DuP9y",
+            category: "Mister"
+        },
+        {
+            id: 3,
+            title: "Miss",
+            description: "APRESENTAMOS A VOCÊS A NOSSA MISS❤️🤍💙",
+            image: "https://2fparaguaios.github.io/IMG-20250617-WA0016.jpg",
+            buttonText: "Ver no Instagram",
+            buttonLink: "https://www.instagram.com/p/DKPP1l-OAAL",
+            category: "Miss"
+        },
+        {
+            id: 4,
+            title: "Hellyton Marinho",
+            description: "Professor Orientador do 2° Ano F",
+            image: "https://2fparaguaios.github.io/IMG-20250617-WA0030.jpg",
+            buttonText: "Ver no Instagram",
+            buttonLink: "https://www.instagram.com/p/DJ70kVXO1aA/",
+            category: "Orientador"
+        },
+        {
+            id: 5,
+            title: "Deveraldo Albuquerque",
+            description: "Professor Orientador do 2° Ano F",
+            image: "https://2fparaguaios.github.io/465570701_1700515944125924_364989083061127969_n.jpg",
+            buttonText: "Ver no Instagram",
+            buttonLink: "https://www.instagram.com/p/DJ74DcFusxq",
+            category: "Orientador"
+        },
+        {
+            id: 6,
+            title: "Entrega do Banner",
+            description: "Finalmente chegou o momento de ver nosso esforço se materializar! ❤️🤍💙",
+            image: "https://2fparaguaios.github.io/banner2f.jpg",
+            buttonText: "Ver no Instagram",
+            buttonLink: "https://www.instagram.com/p/DLGjWOjOaZT",
+            category: "Banner"
+        },
+        {
+            id: 7,
+            title: "Mascote",
+            description: "🇵🇾💪 Apresentamos o nosso mascote oficial: Luis Felipe!",
+            image: "https://2fparaguaios.github.io/luisfelipe.jpg",
+            buttonText: "Ver no Instagram",
+            buttonLink: "https://www.instagram.com/p/DL5tD78B5WF",
+            category: "Mascote"
+        },
+        {
+            id: 8,
+            title: "Mascotes",
+            description: "🇵🇾💙 Com vocês, os mascotes oficiais da turma: Geovanna & Luis!",
+            image: "https://2fparaguaios.github.io/mascotes.jpg",
+            buttonText: "Ver no Instagram",
+            buttonLink: "https://www.instagram.com/p/DL5swsRhvil",
+            category: "Mascote"
+        },
+        {
+            id: 9,
+            title: "Mascote",
+            description: "🇵🇾✨ Apresentamos com orgulho a mascote oficial da sala: Geovanna Gabrielly!",
+            image: "https://2fparaguaios.github.io/geovannagabrielly.jpg",
+            buttonText: "Ver no Instagram",
+            buttonLink: "https://www.instagram.com/p/DL5sYd5hNH1",
+            category: "Mascote"
+        }
+    ]
+};
+
+
+        // Função para criar um card de projeto
+        function createProjectCard(project, index) {
+            return `
+                <div class="project-card bg-white rounded-lg shadow-md overflow-hidden fade-in" style="animation-delay: ${index * 0.1}s">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover" loading="lazy" onerror="this.src='https://placehold.co/600x400/0038A8/FFFFFF?text=${encodeURIComponent(project.title)}'">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-xl font-bold text-paraguai-blue">${project.title}</h3>
+                            <span class="text-xs bg-paraguai-red text-white px-2 py-1 rounded-full">${project.category}</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed">${project.description}</p>
+                        <a href="${project.buttonLink}" target="_blank" class="text-paraguai-red font-semibold hover:underline transition-all duration-300 hover:text-red-700">
+                            ${project.buttonText} &rarr;
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Função para renderizar todos os projetos
+        function renderProjects() {
+            const container = document.getElementById('projects-container');
+            
+            if (!container) {
+                console.error('Container de projetos não encontrado!');
+                return;
+            }
+
+            const projectsHTML = projectsData.projects
+                .map((project, index) => createProjectCard(project, index))
+                .join('');
+            
+            container.innerHTML = projectsHTML;
+        }
+
+        // Função para adicionar um novo projeto
+        function addProject(newProject) {
+            projectsData.projects.push({
+                id: projectsData.projects.length + 1,
+                ...newProject
+            });
+            renderProjects();
+        }
+
+        // Função para filtrar projetos por categoria
+        function filterProjectsByCategory(category) {
+            const container = document.getElementById('projects-container');
+            let filteredProjects = projectsData.projects;
+            
+            if (category && category !== 'all') {
+                filteredProjects = projectsData.projects.filter(project => project.category === category);
+            }
+            
+            const projectsHTML = filteredProjects
+                .map((project, index) => createProjectCard(project, index))
+                .join('');
+            
+            container.innerHTML = projectsHTML;
+        }
+
+        // Menu mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Inicializar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProjects();
+            
+            // Suavizar scroll para links internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Funções globais para facilitar a manipulação via console
+        window.adicionarProjeto = function(titulo, descricao, imagem, textoBotao, linkBotao, categoria) {
+            addProject({
+                title: titulo,
+                description: descricao,
+                image: imagem,
+                buttonText: textoBotao,
+                buttonLink: linkBotao,
+                category: categoria
+            });
+        };
+
+        window.filtrarProjetos = function(categoria) {
+            filterProjectsByCategory(categoria);
+        };
+    </script>
+</body>
+</html>
