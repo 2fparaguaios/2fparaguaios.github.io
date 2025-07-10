@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2°F Paraguaios</title>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --paraguai-red: #D52B1E;
+            --paraguai-blue: #0038A8;
+            --paraguai-white: #FFFFFF;
+            --paraguai-light: #f0f7ff;
+            --paraguai-dark: #0f172a;
+            --paraguai-gray: #64748b;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--paraguai-light);
+            color: var(--paraguai-dark);
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+        body.dark-mode {
+            background-color: var(--paraguai-dark);
+            color: var(--paraguai-white);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--paraguai-white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode header {
+            background-color: #1e293b;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--paraguai-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .logo i {
+            font-size: 1.5rem;
+            color: var(--paraguai-red);
+        }
+        
+        .logo:hover {
+            color: var(--paraguai-red);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            position: relative;
+            text-decoration: none;
+            color: var(--paraguai-blue);
+            font-weight: 600;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .nav-link {
+            color: var(--paraguai-white);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--paraguai-red), var(--paraguai-blue));
+            transition: var(--transition);
+            border-radius: 10px;
+        }
+        
+        .nav-link:hover {
+            color: var(--paraguai-red);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .theme-toggle {
+            background: linear-gradient(135deg, var(--paraguai-blue), var(--paraguai-red));
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--paraguai-blue);
+            cursor: pointer;
+        }
+        
+        body.dark-mode .mobile-menu-btn {
+            color: var(--paraguai-white);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(213, 43, 30, 0.1), rgba(0, 56, 168, 0.1));
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--paraguai-red), var(--paraguai-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--paraguai-gray);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+        
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--paraguai-red), var(--paraguai-blue));
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(213, 43, 30, 0.3);
+            transition: var(--transition);
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(213, 43, 30, 0.4);
+        }
+        
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+        
+        .hero-img {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 1.5s ease 0.6s forwards;
+            opacity: 0;
+        }
+        
+        .hero-img img {
+            width: 100%;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .hero-img:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Banner Section */
+        .banner {
+            background: linear-gradient(135deg, var(--paraguai-red), var(--paraguai-blue));
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            color: white;
+            text-align: center;
+            margin: 4rem 0;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+            animation: rotate 60s linear infinite;
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .banner h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .banner-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .banner-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--paraguai-red);
+            font-weight: 600;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .banner-btn:hover {
+            transform: translateY(-5px);
+            background: white;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            color: var(--paraguai-blue);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3.5rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--paraguai-red), var(--paraguai-blue));
+            border-radius: 2px;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+        
+        .about-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(213, 43, 30, 0.1), rgba(0, 56, 168, 0.1));
+            z-index: 1;
+        }
+        
+        .about-img img {
+            width: 100%;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--paraguai-gray);
+        }
+        
+        body.dark-mode .about-text p {
+            color: #cbd5e1;
+        }
+        
+        /* Projects Section */
+        .projects {
+            background-color: rgba(0, 56, 168, 0.03);
+            position: relative;
+        }
+        
+        body.dark-mode .projects {
+            background-color: rgba(15, 23, 42, 0.8);
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            background: white;
+            color: var(--paraguai-blue);
+            border: 2px solid var(--paraguai-blue);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: linear-gradient(135deg, var(--paraguai-red), var(--paraguai-blue));
+            color: white;
+            border-color: transparent;
+        }
+        
+        body.dark-mode .filter-btn {
+            background: #1e293b;
+            color: white;
+            border-color: #334155;
+        }
+        
+        body.dark-mode .filter-btn.active, 
+        body.dark-mode .filter-btn:hover {
+            background: linear-gradient(135deg, var(--paraguai-red), var(--paraguai-blue));
+            border-color: transparent;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        body.dark-mode .project-card {
+            background: #1e293b;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-img {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-img img {
+            transform: scale(1.08);
+        }
+        
+        .project-content {
+            padding: 1.8rem;
+        }
+        
+        .project-category {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--paraguai-red), var(--paraguai-blue));
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            margin-bottom: 0.8rem;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--paraguai-blue);
+        }
+        
+        body.dark-mode .project-title {
+            color: white;
+        }
+        
+        .project-desc {
+            color: var(--paraguai-gray);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        body.dark-mode .project-desc {
+            color: #cbd5e1;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--paraguai-red);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .project-link:hover {
+            color: var(--paraguai-blue);
+            gap: 0.7rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            text-align: center;
+        }
+        
+        .contact p {
+            font-size: 1.2rem;
+            color: var(--paraguai-gray);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+        
+        body.dark-mode .contact p {
+            color: #cbd5e1;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--paraguai-blue), var(--paraguai-dark));
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--paraguai-red);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .banner h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .banner {
+                padding: 2rem 1.5rem;
+            }
+            
+            .banner h2 {
+                font-size: 1.5rem;
+            }
+            
+            .banner-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .project-card {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="home">
+        <div class="container">
+            <div class="header-content">
+                <a href="#home" class="logo">
+                    <i class="fas fa-flag"></i>
+                    <span>2°F Paraguaios</span>
+                </a>
+                
+                <div class="nav-links">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">Sobre Nós</a>
+                    <a href="#projects" class="nav-link">Destaques</a>
+                    <a href="#contact" class="nav-link">Contato</a>
+                    <a href="https://www.instagram.com/gisa.2fparaguai" target="_blank" class="nav-link">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>2°F Paraguaios</h1>
+            <p>Hermanos, Ey! Conectando culturas e compartilhando a riqueza do Paraguai</p>
+            <a href="https://www.instagram.com/gisa.2fparaguai" target="_blank" class="cta-btn">
+                <i class="fab fa-instagram"></i> @gisa.2fparaguai
+            </a>
+            
+            <div class="hero-img">
+                <img src="https://2fparaguaios.github.io/paraguaios.jpg" alt="2°F Paraguaios">
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Section -->
+    <section>
+        <div class="container">
+            <div class="banner">
+                <div class="banner-content">
+                    <h2>Conheça mais sobre o Paraguai e sua cultura</h2>
+                    <div class="banner-buttons">
+                        <a href="/comidas-tipicas" class="banner-btn">
+                            <i class="fas fa-utensils"></i> Comidas Típicas
+                        </a>
+                        <a href="/dancas-paraguaias" class="banner-btn">
+                            <i class="fas fa-music"></i> Danças Paraguaias
+                        </a>
+                        <a href="/turismo" class="banner-btn">
+                            <i class="fas fa-map-marked-alt"></i> Turismo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Nós</h2>
+            
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://2fparaguaios.github.io/paraguaios.jpg" alt="Sobre o 2°F Paraguaios">
+                </div>
+                
+                <div class="about-text">
+                    <p>Bem-vindo ao nosso Paraguai! Onde a rica cultura e as belezas naturais do Paraguai ganham vida. Através de fotos, histórias e descobertas, celebramos a diversidade e a herança cultural deste país fascinante.</p>
+                    
+                    <p>Nosso projeto nasceu da paixão por compartilhar a autenticidade paraguaia - desde sua culinária única até as tradicionais danças folclóricas, da arquitetura colonial às paisagens deslumbrantes.</p>
+                    
+                    <p>Convidamos você a mergulhar nessa jornada única. Cada clique é uma celebração da diversidade paraguaia. Vamos juntos?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Nossos Destaques</h2>
+            
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="Mister & Miss">Mister & Miss</button>
+                <button class="filter-btn" data-filter="Orientador">Orientadores</button>
+                <button class="filter-btn" data-filter="Banner">Banner</button>
+                <button class="filter-btn" data-filter="Mascote">Mascotes</button>
+            </div>
+            
+            <div class="projects-grid" id="projectsContainer">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Continue Conectado</h2>
+            <p>Siga nosso Instagram para acompanhar as novidades, eventos e tudo sobre a cultura paraguaia!</p>
+            <a href="https://www.instagram.com/gisa.2fparaguai" target="_blank" class="cta-btn">
+                <i class="fab fa-instagram"></i> Siga-nos no Instagram
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/gisa.2fparaguai" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                <p class="copyright">2° Ano F - 2025 © Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Projetos data
+        const projectsData = {
+            projects: [
+                {
+                    id: 1,
+                    title: "Mister & Miss 2°F",
+                    description: "APRESENTAMOS A VOCÊS NOSSO MISTER & MISS!!",
+                    image: "https://2fparaguaios.github.io/IMG-20250617-WA0013.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DKPPLsVugh8",
+                    category: "Mister & Miss"
+                },
+                {
+                    id: 2,
+                    title: "Mister",
+                    description: "APRESENTAMOS A VOCÊS, NOSSO MISTER❤️🤍💙",
+                    image: "https://2fparaguaios.github.io/IMG-20250617-WA0014.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DKPO14DuP9y",
+                    category: "Mister & Miss"
+                },
+                {
+                    id: 3,
+                    title: "Miss",
+                    description: "APRESENTAMOS A VOCÊS A NOSSA MISS❤️🤍💙",
+                    image: "https://2fparaguaios.github.io/IMG-20250617-WA0016.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DKPP1l-OAAL",
+                    category: "Mister & Miss"
+                },
+                {
+                    id: 4,
+                    title: "Hellyton Marinho",
+                    description: "Professor Orientador do 2° Ano F",
+                    image: "https://2fparaguaios.github.io/IMG-20250617-WA0030.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DJ70kVXO1aA/",
+                    category: "Orientador"
+                },
+                {
+                    id: 5,
+                    title: "Deveraldo Albuquerque",
+                    description: "Professor Orientador do 2° Ano F",
+                    image: "https://2fparaguaios.github.io/465570701_1700515944125924_364989083061127969_n.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DJ74DcFusxq",
+                    category: "Orientador"
+                },
+                {
+                    id: 6,
+                    title: "Entrega do Banner",
+                    description: "Finalmente chegou o momento de ver nosso esforço se materializar! ❤️🤍💙",
+                    image: "https://2fparaguaios.github.io/banner2f.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DLGjWOjOaZT",
+                    category: "Banner"
+                },
+                {
+                    id: 7,
+                    title: "Mascote",
+                    description: "🇵🇾💪 Apresentamos o nosso mascote oficial: Luis Felipe!",
+                    image: "https://2fparaguaios.github.io/luisfelipe.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DL5tD78B5WF",
+                    category: "Mascote"
+                },
+                {
+                    id: 8,
+                    title: "Mascotes",
+                    description: "🇵🇾💙 Com vocês, os mascotes oficiais da turma: Geovanna & Luis!",
+                    image: "https://2fparaguaios.github.io/mascotes.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DL5swsRhvil",
+                    category: "Mascote"
+                },
+                {
+                    id: 9,
+                    title: "Mascote",
+                    description: "🇵🇾✨ Apresentamos com orgulho a mascote oficial da sala: Geovanna Gabrielly!",
+                    image: "https://2fparaguaios.github.io/geovannagabrielly.jpg",
+                    buttonText: "Ver no Instagram",
+                    buttonLink: "https://www.instagram.com/p/DL5sYd5hNH1",
+                    category: "Mascote"
+                }
+            ]
+        };
+
+        // DOM Elements
+        const projectsContainer = document.getElementById('projectsContainer');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const themeToggle = document.getElementById('themeToggle');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+
+        // Render projects
+        function renderProjects(filter = 'all') {
+            projectsContainer.innerHTML = '';
+            
+            const filteredProjects = filter === 'all' 
+                ? projectsData.projects 
+                : projectsData.projects.filter(project => project.category === filter);
+            
+            filteredProjects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                projectCard.innerHTML = `
+                    <div class="project-img">
+                        <img src="${project.image}" alt="${project.title}" onerror="this.src='https://placehold.co/600x400/0038A8/FFFFFF?text=${encodeURIComponent(project.title)}'">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">${project.category}</span>
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-desc">${project.description}</p>
+                        <a href="${project.buttonLink}" target="_blank" class="project-link">
+                            ${project.buttonText} <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                `;
+                projectsContainer.appendChild(projectCard);
+            });
+        }
+
+        // Filter projects
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Filter projects
+                const filter = button.getAttribute('data-filter');
+                renderProjects(filter);
+            });
+        });
+
+        // Theme toggle
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            const icon = themeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth < 768) {
+                        navLinks.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProjects();
+            
+            // Set initial theme icon
+            const icon = themeToggle.querySelector('i');
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.style.display = 'flex';
+            } else {
+                navLinks.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
